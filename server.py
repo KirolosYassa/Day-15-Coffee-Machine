@@ -26,7 +26,12 @@ def coffee_machine_app():
                 print(f"Sorry there is not enough {insufficient_resources[0]} and {insufficient_resources[1]}.")
             elif len(insufficient_resources) == 3:
                 print(f"Sorry there is not enough {insufficient_resources[0]}, {insufficient_resources[1]} and {insufficient_resources[2]}.")
-    #TODO: 3. process resources 
+        else:
+            #TODO: 3. process resources 
+            process_coins_status = coffeeMachine.process_coins(drink)
+            # print(f"process_coins status: {process_coins_status}")
+            if process_coins_status == False:
+                print("Sorry that's not enough money. Money Refunded")
     #TODO: 4. check transaction successeful?
     #TODO: 5. make coffee
     
