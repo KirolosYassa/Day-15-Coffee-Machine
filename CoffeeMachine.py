@@ -49,6 +49,9 @@ Money: ${self.money}
             pass     
         return all_is_found, insufficient_resources
     
+    def calculate_coins(self, quarters, dimes, nickles, pennies):
+        return (quarters*0.25) + (dimes*0.1) + (nickles*0.05) + (pennies*0.01)
+    
     def process_coins(self, drink):
         drink_cost = float(MENU[drink]["cost"])
         print("Please insert coins:")
@@ -56,7 +59,8 @@ Money: ${self.money}
         dimes = float(input("How many dimes: "))
         nickles = float(input("How many nickles: "))
         pennies = float(input("How many pennies: "))
-        total_inserted_coins = (quarters*0.25) + (dimes*0.1) + (nickles*0.05) + (pennies*0.01)
+        total_inserted_coins = self.calculate_coins(quarters, dimes, nickles, pennies)
+        change = total_inserted_coins - drink_cost
         if total_inserted_coins >= drink_cost:
-            return True
+            return True, change
         return False
