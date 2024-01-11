@@ -18,8 +18,14 @@ def coffee_machine_app():
     #TODO: 2. check resources sufficients?
     elif user_answer == "espresso" or user_answer == "latte" or user_answer == "cappuccino":
         drink = user_answer
-        print(coffeeMachine.check_resources_sufficients(drink))
-        
+        resources_sufficients_status, insufficient_resources =coffeeMachine.check_resources_sufficients(drink)
+        if resources_sufficients_status == False:
+            if len(insufficient_resources) == 1:
+                print(f"Sorry there is not enough {insufficient_resources[0]}.")
+            elif len(insufficient_resources) == 2:
+                print(f"Sorry there is not enough {insufficient_resources[0]} and {insufficient_resources[1]}.")
+            elif len(insufficient_resources) == 3:
+                print(f"Sorry there is not enough {insufficient_resources[0]}, {insufficient_resources[1]} and {insufficient_resources[2]}.")
     #TODO: 3. process resources 
     #TODO: 4. check transaction successeful?
     #TODO: 5. make coffee

@@ -21,10 +21,12 @@ Money: ${self.money}
 
     def check_resources_sufficients(self, drink):
         all_is_found = True
+        insufficient_resources = []
         
         try:
             if MENU[drink]["ingredients"]["water"] > self.resources_water:
                 all_is_found = False  
+                insufficient_resources.append("water")
         except KeyError:
             pass
         finally:
@@ -32,6 +34,7 @@ Money: ${self.money}
         try:
             if MENU[drink]["ingredients"]["milk"] > self.resources_milk:
                 all_is_found = False
+                insufficient_resources.append("milk")
         except KeyError:
             pass
         finally:
@@ -39,8 +42,9 @@ Money: ${self.money}
         try:
             if MENU[drink]["ingredients"]["coffee"] > self.resources_coffee:
                 all_is_found = False
+                insufficient_resources.append("coffee")
         except KeyError:
             pass
         finally:
             pass     
-        return all_is_found
+        return all_is_found, insufficient_resources
