@@ -28,17 +28,18 @@ def coffee_machine_app():
                 print(f"Sorry there is not enough {insufficient_resources[0]}, {insufficient_resources[1]} and {insufficient_resources[2]}.")
             
             return coffee_machine_app()
-    #TODO: 3. process resources
-    process_coins_status, change = coffeeMachine.process_coins(drink)
-        
-    #TODO: 4. check transaction successeful?
-    if process_coins_status == False:
-        print("Sorry that's not enough money. Money Refunded")
-        return coffee_machine_app()
-        
-    #TODO: 5. make coffee
-    print(f"Here is the change: ${change}")
-    
+        #TODO: 3. process resources
+        process_coins_status, change = coffeeMachine.process_coins(drink)
+            
+        #TODO: 4. check transaction successeful?
+        if process_coins_status == False:
+            print("Sorry that's not enough money. Money Refunded")
+            return coffee_machine_app()
+            
+        #TODO: 5. make coffee
+        print(f"Here is the change: ${round(change, 2)}")
+        coffeeMachine.make_drink(drink)
+        print(f"Here is your {drink} ☕ Enjoy!")
     
     coffee_machine_app()
     

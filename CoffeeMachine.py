@@ -63,4 +63,28 @@ Money: ${self.money}
         change = total_inserted_coins - drink_cost
         if total_inserted_coins >= drink_cost:
             return True, change
-        return False
+        return False, change
+    
+    def make_drink(self, drink):
+        try:
+            self.resources_water = self.resources_water - MENU[drink]["ingredients"]["water"]
+        except KeyError:
+            pass
+        finally:
+            pass
+        try:
+            self.resources_milk = self.resources_milk - MENU[drink]["ingredients"]["milk"]
+        except KeyError:
+            pass
+        finally:
+            pass
+        try:
+            self.resources_coffee = self.resources_coffee - MENU[drink]["ingredients"]["coffee"]
+        except KeyError:
+            pass
+        finally:
+            pass
+        
+        
+        
+        
